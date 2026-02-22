@@ -1,0 +1,172 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Invoice Generator Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-3",
+      "summary": "Create invoice form with customer details, dynamic line items, currency selection, and automatic calculation",
+      "acceptanceCriteria": [
+        "Form includes fields for customer name, email, and address",
+        "Users can add/remove line items dynamically",
+        "Currency dropdown includes at least USD and INR",
+        "Subtotal, tax amount, and total are calculated automatically as user inputs data",
+        "Form validates required fields before submission"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/InvoiceForm.tsx",
+          "operation": "create",
+          "description": "Create invoice form component with customer details section (name, email, address fields), dynamic line items array (description, quantity, unit price with add/remove buttons), currency dropdown (USD, INR options with symbols), tax rate input, and auto-calculated subtotal/tax/total display. Use React state for form data and calculations. Wire into App.tsx router for '/create' and '/edit/:id' routes."
+        },
+        {
+          "path": "frontend/src/hooks/useInvoiceCalculations.ts",
+          "operation": "create",
+          "description": "Create custom hook for invoice calculations that computes subtotal from line items (quantity × unit price), applies tax rate to calculate tax amount, and returns total amount. Include currency symbol mapping (USD → '$', INR → '₹'). Return formatted values and raw numbers."
+        },
+        {
+          "path": "frontend/src/hooks/useCreateInvoice.ts",
+          "operation": "create",
+          "description": "Create mutation hook that calls backend createInvoice method with invoice data. Handle loading states, success, and error responses. Invalidate invoice list query on success."
+        },
+        {
+          "path": "frontend/src/hooks/useUpdateInvoice.ts",
+          "operation": "create",
+          "description": "Create mutation hook that calls backend updateInvoice method with invoice ID and updated data. Handle loading states, success, and error responses. Invalidate invoice queries on success."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Display formatted invoice preview with all details and currency symbols",
+      "acceptanceCriteria": [
+        "Invoice preview renders in a professional, printable layout",
+        "Currency symbol displays correctly based on selected currency (e.g., $ for USD, ₹ for INR)",
+        "All invoice data is clearly visible and formatted",
+        "Preview updates when invoice data changes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/InvoicePreview.tsx",
+          "operation": "create",
+          "description": "Create invoice preview component with professional printable layout showing company/sender section at top, customer details, line items table (description, quantity, unit price, amount columns), and totals section (subtotal, tax rate/amount, total with currency symbol). Accept invoice data as props and format amounts with appropriate currency symbols. Use clean typography and spacing suitable for business documents."
+        },
+        {
+          "path": "frontend/src/pages/InvoiceDetailPage.tsx",
+          "operation": "create",
+          "description": "Create invoice detail page that fetches invoice by ID from backend and displays InvoicePreview component. Include actions toolbar with download and share buttons. Use query hook to fetch invoice data. Wire into App.tsx router for '/invoice/:id' route."
+        },
+        {
+          "path": "frontend/src/hooks/useGetInvoice.ts",
+          "operation": "create",
+          "description": "Create query hook that calls backend getInvoice method with invoice ID parameter. Return invoice data, loading state, and error state using React Query."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Implement PDF download functionality for invoices",
+      "acceptanceCriteria": [
+        "Download button generates a PDF of the current invoice",
+        "PDF includes all invoice details in a professional format",
+        "Downloaded file is named appropriately (e.g., 'Invoice-[number].pdf')",
+        "PDF preserves formatting and currency symbols"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/pdfGenerator.ts",
+          "operation": "create",
+          "description": "Create PDF generation utility using a client-side PDF library (e.g., jsPDF or html2pdf.js). Accept invoice data and generate PDF with professional layout matching InvoicePreview component. Include company header, customer details, line items table, and totals. Preserve currency symbols and formatting. Return blob for download with filename 'Invoice-[invoiceNumber].pdf'."
+        },
+        {
+          "path": "frontend/src/components/DownloadButton.tsx",
+          "operation": "create",
+          "description": "Create download button component that triggers PDF generation and browser download. Accept invoice data as props, call pdfGenerator utility, create blob URL, trigger download with proper filename, and clean up blob URL. Show loading state during generation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement share functionality for invoices via shareable link",
+      "acceptanceCriteria": [
+        "Users can generate a shareable link to view the invoice",
+        "Share button provides options for common sharing methods",
+        "Shared invoices are accessible without authentication",
+        "Share functionality works across different devices"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ShareButton.tsx",
+          "operation": "create",
+          "description": "Create share button component that generates shareable link to invoice detail page using current URL with invoice ID. Provide copy-to-clipboard functionality with visual feedback. Include share icon and success toast notification when link is copied."
+        },
+        {
+          "path": "frontend/src/pages/PublicInvoiceViewPage.tsx",
+          "operation": "create",
+          "description": "Create public invoice view page (no authentication required) that displays invoice preview and download button. Fetch invoice data by ID from URL params. Show read-only InvoicePreview component and DownloadButton. Wire into App.tsx router for '/public/invoice/:id' route without authentication guards."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create dashboard listing all invoices with view, edit, and delete actions",
+      "acceptanceCriteria": [
+        "Dashboard displays all invoices in a table or card layout",
+        "Each invoice shows invoice number, customer name, date, amount with currency symbol, and status",
+        "Users can click to view full invoice details",
+        "Edit and delete actions are available for each invoice",
+        "Dashboard updates in real-time when invoices are created, edited, or deleted"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/DashboardPage.tsx",
+          "operation": "create",
+          "description": "Create dashboard page that lists all invoices fetched from backend listInvoices method. Display invoices in responsive table/card layout showing invoice number, customer name, formatted date, total amount with currency symbol, and status badge (draft/finalized). Include action buttons for view (navigate to detail), edit (navigate to form), and delete (with confirmation). Use the authorization component to ensure user is authenticated before displaying data. Wire into App.tsx router for '/dashboard' route with authentication guard."
+        },
+        {
+          "path": "frontend/src/hooks/useListInvoices.ts",
+          "operation": "create",
+          "description": "Create query hook that calls backend listInvoices method. Return array of invoices, loading state, and error state using React Query. Configure automatic refetch on window focus for real-time updates."
+        },
+        {
+          "path": "frontend/src/hooks/useDeleteInvoice.ts",
+          "operation": "create",
+          "description": "Create mutation hook that calls backend deleteInvoice method with invoice ID. Handle loading states, success, and error responses. Invalidate invoice list query on success for real-time dashboard updates."
+        },
+        {
+          "path": "frontend/src/components/InvoiceListItem.tsx",
+          "operation": "create",
+          "description": "Create reusable invoice list item component for dashboard. Display invoice number, customer name, formatted date, amount with currency symbol, and status badge. Include action buttons (view, edit, delete with confirmation modal). Accept invoice data and action callbacks as props."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Apply professional business-themed visual design with consistent styling",
+      "acceptanceCriteria": [
+        "Color scheme avoids default blue/purple and uses professional business colors",
+        "Typography is clear and readable for business documents",
+        "Layout is clean and organized with proper spacing",
+        "Design conveys professionalism and trustworthiness",
+        "Visual style is applied consistently across all pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles with professional business color palette (e.g., slate gray, forest green, warm neutrals instead of blue/purple). Define CSS custom properties for primary, secondary, accent, success, warning, error colors. Set professional typography with clear font stack (e.g., Inter, system-ui). Establish consistent spacing scale and clean layout foundations."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with professional business color palette matching index.css custom properties. Configure typography plugin for readable business document styling. Add custom spacing and border radius values for clean, organized layouts."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create layout component wrapper with consistent header (logo, navigation, login button from authorization component), main content area, and footer. Apply professional styling with clean spacing and organized structure. Use across all authenticated pages for consistency."
+        }
+      ]
+    }
+  ]
+}

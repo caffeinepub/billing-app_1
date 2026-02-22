@@ -1,0 +1,110 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-display-a-formatted-invoice-preview-that-shows-all-invoice-details-including-company-sender-information-customer-information-line-items-table-subtotal-tax-and-total-with-the-selected-currency-symbol",
+      "featureTitle": "Display a formatted invoice preview that shows all invoice details including company/sender information, customer information, line items table, subtotal, tax, and total with the selected currency symbol",
+      "files": [
+        "frontend/src/components/InvoicePreview.tsx",
+        "frontend/src/pages/InvoiceDetailPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-download-functionality-that-allows-users-to-download-the-invoice-as-a-pdf-file",
+      "featureTitle": "Implement download functionality that allows users to download the invoice as a PDF file",
+      "files": [
+        "frontend/src/components/DownloadButton.tsx",
+        "frontend/src/utils/pdfGenerator.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-share-send-functionality-that-allows-users-to-share-the-invoice-via-common-platforms-or-methods-e-g-copy-shareable-link-download-for-email-attachment",
+      "featureTitle": "Implement share/send functionality that allows users to share the invoice via common platforms or methods (e.g., copy shareable link, download for email attachment)",
+      "files": [
+        "frontend/src/components/ShareButton.tsx",
+        "frontend/src/pages/PublicInvoiceViewPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-dashboard-page-that-lists-all-created-invoices-with-key-details-invoice-number-customer-name-date-total-amount-with-currency-status-and-allows-users-to-view-edit-or-delete-each-invoice",
+      "featureTitle": "Create a dashboard page that lists all created invoices with key details (invoice number, customer name, date, total amount with currency, status) and allows users to view, edit, or delete each invoice",
+      "files": [
+        "frontend/src/pages/DashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-creative-professional-visual-design-theme-suitable-for-a-business-invoicing-application-with-a-consistent-color-palette-typography-and-layout-that-conveys-trust-and-professionalism",
+      "featureTitle": "Apply a creative, professional visual design theme suitable for a business invoicing application with a consistent color palette, typography, and layout that conveys trust and professionalism",
+      "files": [
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

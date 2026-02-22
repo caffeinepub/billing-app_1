@@ -1,0 +1,19 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, routing configuration for all invoice pages, and profile setup modal for first-time users.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including user profile management and invoice CRUD operations with proper cache invalidation.",
+  "frontend/src/components/Layout.tsx": "Application layout wrapper with header containing logo, navigation, new invoice button, and login/logout functionality, plus footer with attribution.",
+  "frontend/src/pages/DashboardPage.tsx": "Dashboard page displaying all invoices in a table with view, edit, and delete actions, includes authentication check and empty state.",
+  "frontend/src/pages/InvoiceFormPage.tsx": "Invoice creation and editing form with customer details, dynamic line items, currency selection, tax calculation, and real-time total computation.",
+  "frontend/src/pages/InvoiceDetailPage.tsx": "Invoice detail view page with preview, edit, share, and download actions for authenticated users.",
+  "frontend/src/pages/PublicInvoiceViewPage.tsx": "Public invoice view page accessible without authentication for sharing invoices via link.",
+  "frontend/src/components/InvoicePreview.tsx": "Professional invoice preview component displaying all invoice details in a printable business document format.",
+  "frontend/src/components/DownloadButton.tsx": "Button component that triggers invoice PDF generation via print dialog with loading state and error handling.",
+  "frontend/src/components/ShareButton.tsx": "Button component that copies shareable public invoice link to clipboard with visual feedback.",
+  "frontend/src/utils/formatters.ts": "Utility functions for formatting currency amounts with symbols, dates, and currency symbol mapping.",
+  "frontend/src/utils/pdfGenerator.ts": "PDF generation utility using browser's native print functionality to create downloadable invoice PDFs without external dependencies.",
+  "frontend/src/index.css": "Global styles with professional business-focused OKLCH color system for light and dark modes using neutral grays.",
+  "frontend/tailwind.config.js": "Tailwind configuration with Inter font family and extended theme matching the professional business design system.",
+  "frontend/package.json": "Package configuration with html2pdf.js dependency added for PDF generation functionality.",
+  "frontend/src/main.tsx": "Application entry point with React Query, Internet Identity providers, and Sonner toast notifications for user feedback.",
+  "frontend/src/types/html2pdf.d.ts": "TypeScript type declaration file for html2pdf.js library defining interfaces and function signatures."
+}

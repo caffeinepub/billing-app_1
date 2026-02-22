@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Billing app with invoice creation, download/share functionality, and multi-currency support",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-display-a-formatted-invoice-preview-that-shows-all-invoice-details-including-company-sender-information-customer-information-line-items-table-subtotal-tax-and-total-with-the-selected-currency-symbol",
+      "title": "Display a formatted invoice preview that shows all invoice details including company/sender information, customer information, line items table, subtotal, tax, and total with the selected currency symbol",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-download-functionality-that-allows-users-to-download-the-invoice-as-a-pdf-file",
+      "title": "Implement download functionality that allows users to download the invoice as a PDF file",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-share-send-functionality-that-allows-users-to-share-the-invoice-via-common-platforms-or-methods-e-g-copy-shareable-link-download-for-email-attachment",
+      "title": "Implement share/send functionality that allows users to share the invoice via common platforms or methods (e.g., copy shareable link, download for email attachment)",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-dashboard-page-that-lists-all-created-invoices-with-key-details-invoice-number-customer-name-date-total-amount-with-currency-status-and-allows-users-to-view-edit-or-delete-each-invoice",
+      "title": "Create a dashboard page that lists all created invoices with key details (invoice number, customer name, date, total amount with currency, status) and allows users to view, edit, or delete each invoice",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-creative-professional-visual-design-theme-suitable-for-a-business-invoicing-application-with-a-consistent-color-palette-typography-and-layout-that-conveys-trust-and-professionalism",
+      "title": "Apply a creative, professional visual design theme suitable for a business invoicing application with a consistent color palette, typography, and layout that conveys trust and professionalism",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create and manage bills/invoices",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Download bills as files",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Share/send bills to other platforms",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Multi-currency support (USD, INR, etc.)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create a backend data model for invoices that stores: unique invoice ID, invoice number, date, customer details (name, email, address), line items (description, quantity, unit price), subtotal, tax rate, tax amount, total amount, currency code (USD, INR, etc.), and status (draft, finalized)",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement backend methods to create new invoices, retrieve invoices by ID, list all invoices, update invoice details, and delete invoices",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Create a frontend form that allows users to input customer information (name, email, address), add multiple line items (description, quantity, unit price), select currency from a dropdown (at minimum USD and INR), specify tax rate, and calculate totals automatically",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Billing App",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

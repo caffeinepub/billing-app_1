@@ -1,0 +1,67 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-21T09:31:08.456Z",
+  "summary": "The implementation closely aligns with the BuildRequest. All 8 requirements appear to be addressed: backend data models and CRUD operations (REQ-1, REQ-2), frontend invoice form with dynamic line items and multi-currency support (REQ-3), formatted invoice preview (REQ-4), PDF download functionality (REQ-5), share/link functionality (REQ-6), dashboard with invoice listing and management (REQ-7), and professional design theme (REQ-8). The diff shows a comprehensive billing app with invoice management capabilities.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "User profile management system with profile setup modal and profile storage",
+      "reason": "BuildRequest makes no mention of user profiles, profile setup modals, or storing user profile data. The backend includes UserProfile type, getCallerUserProfile, getUserProfile, and saveCallerUserProfile methods. The frontend includes ProfileSetupModal component that blocks access until a name is entered.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Access control and authorization system with admin roles and permissions",
+      "reason": "BuildRequest does not specify any access control system, admin roles, or permission-based authorization. The implementation includes AccessControl module, MixinAuthorization, admin token initialization, and permission checks throughout backend methods.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Blob storage system",
+      "reason": "BuildRequest does not mention blob storage or file storage beyond PDF generation. Backend includes MixinStorage import and initialization.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Support for EUR and GBP currencies beyond the minimum USD and INR",
+      "reason": "BuildRequest specifies 'at minimum USD and INR currencies' but explicitly states this as a minimum requirement, not additional currencies. The implementation adds EUR and GBP which go beyond the specified minimum.",
+      "evidence": [
+        "frontend/src/pages/InvoiceFormPage.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.92,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/DownloadButton.tsx",
+    "frontend/src/components/InvoicePreview.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/ShareButton.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/DashboardPage.tsx",
+    "frontend/src/pages/InvoiceDetailPage.tsx",
+    "frontend/src/pages/InvoiceFormPage.tsx",
+    "frontend/src/pages/PublicInvoiceViewPage.tsx",
+    "frontend/src/types/html2pdf.d.ts",
+    "frontend/src/utils/formatters.ts",
+    "frontend/src/utils/pdfGenerator.ts",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

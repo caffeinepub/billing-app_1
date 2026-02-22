@@ -1,0 +1,179 @@
+{
+  "kind": "build_request",
+  "title": "Create billing app with invoice generation, download, and multi-currency support",
+  "projectName": "Invoice Generator",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a backend data model for invoices that stores: unique invoice ID, invoice number, date, customer details (name, email, address), line items (description, quantity, unit price), subtotal, tax rate, tax amount, total amount, currency code (USD, INR, etc.), and status (draft, finalized)",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make a billing app where anyone can make bill for anything"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Invoice model includes all required fields",
+        "Currency is stored as a string code (e.g., 'USD', 'INR')",
+        "Line items support multiple entries per invoice",
+        "Invoice can be persisted and retrieved by ID"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement backend methods to create new invoices, retrieve invoices by ID, list all invoices, update invoice details, and delete invoices",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make a billing app where anyone can make bill for anything"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Create method accepts invoice data and returns the created invoice with ID",
+        "Retrieve method returns invoice details for a given ID",
+        "List method returns all invoices",
+        "Update method modifies existing invoice fields",
+        "Delete method removes invoice from storage"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a frontend form that allows users to input customer information (name, email, address), add multiple line items (description, quantity, unit price), select currency from a dropdown (at minimum USD and INR), specify tax rate, and calculate totals automatically",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make a billing app where anyone can make bill for anything",
+          "make currency in different options ex. Usd, inr etc"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form includes fields for customer name, email, and address",
+        "Users can add/remove line items dynamically",
+        "Currency dropdown includes at least USD and INR",
+        "Subtotal, tax amount, and total are calculated automatically as user inputs data",
+        "Form validates required fields before submission"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Display a formatted invoice preview that shows all invoice details including company/sender information, customer information, line items table, subtotal, tax, and total with the selected currency symbol",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make a billing app where anyone can make bill for anything"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Invoice preview renders in a professional, printable layout",
+        "Currency symbol displays correctly based on selected currency (e.g., $ for USD, ₹ for INR)",
+        "All invoice data is clearly visible and formatted",
+        "Preview updates when invoice data changes"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement download functionality that allows users to download the invoice as a PDF file",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "download or send it to another platform"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Download button generates a PDF of the current invoice",
+        "PDF includes all invoice details in a professional format",
+        "Downloaded file is named appropriately (e.g., 'Invoice-[number].pdf')",
+        "PDF preserves formatting and currency symbols"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement share/send functionality that allows users to share the invoice via common platforms or methods (e.g., copy shareable link, download for email attachment)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "send it to another platform"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can generate a shareable link to view the invoice",
+        "Share button provides options for common sharing methods",
+        "Shared invoices are accessible without authentication",
+        "Share functionality works across different devices"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Create a dashboard page that lists all created invoices with key details (invoice number, customer name, date, total amount with currency, status) and allows users to view, edit, or delete each invoice",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make a billing app where anyone can make bill for anything"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard displays all invoices in a table or card layout",
+        "Each invoice shows invoice number, customer name, date, amount with currency symbol, and status",
+        "Users can click to view full invoice details",
+        "Edit and delete actions are available for each invoice",
+        "Dashboard updates in real-time when invoices are created, edited, or deleted"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Apply a creative, professional visual design theme suitable for a business invoicing application with a consistent color palette, typography, and layout that conveys trust and professionalism",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color scheme avoids default blue/purple and uses professional business colors",
+        "Typography is clear and readable for business documents",
+        "Layout is clean and organized with proper spacing",
+        "Design conveys professionalism and trustworthiness",
+        "Visual style is applied consistently across all pages"
+      ]
+    }
+  ],
+  "constraints": [
+    "Must support at minimum USD and INR currencies",
+    "Invoice calculations must be accurate for financial data",
+    "PDF generation must work client-side without external services"
+  ],
+  "nonGoals": [
+    "Payment processing or payment gateway integration",
+    "Email sending functionality (only download/share link)",
+    "Multi-user accounts or user authentication beyond Internet Identity",
+    "Recurring invoices or subscription billing",
+    "Integration with accounting software",
+    "Invoice templates with different layouts"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
